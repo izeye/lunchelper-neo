@@ -19,7 +19,7 @@ public class AbstractRating extends TimestampManaged {
 	@JoinColumn(name = "USER_ID")
 	private User user;
 	
-	private int score;
+	private RatingScore score;
 	private String comment;
 	
 }

@@ -1,4 +1,4 @@
-package com.izeye.lunchelper.neo.config;
+package com.izeye.lunchelper.neo;
 
 import com.izeye.lunchelper.neo.Application;
 import org.junit.Test;
@@ -25,7 +25,7 @@ import static org.hamcrest.core.IsNull.nullValue;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(Application.class)
-public class PersistenceConfigTests {
+public class ApplicationTests {
 	
 	@Autowired
 	DataSource dataSource;

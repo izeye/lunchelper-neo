@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -18,6 +19,6 @@ public class Lunch extends TimestampManaged {
 	private LocalDate lunchDate;
 	
 	@OneToMany(mappedBy = "lunch")
-	private Set<Vote> votes;
+	private Set<Vote> votes = new HashSet<>();
 	
 }

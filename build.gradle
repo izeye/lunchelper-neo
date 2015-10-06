@@ -35,11 +35,7 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    compile("org.springframework.boot:spring-boot-starter-jdbc")
-    
-    compile("org.springframework:spring-orm")
-    
-    compile("org.hibernate:hibernate-entitymanager")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
     
     runtime("com.h2database:h2")
 
