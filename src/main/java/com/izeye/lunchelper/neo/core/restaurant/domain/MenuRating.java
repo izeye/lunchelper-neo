@@ -1,0 +1,20 @@
+package com.izeye.lunchelper.neo.core.restaurant.domain;
+
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+/**
+ * Created by izeye on 15. 10. 2..
+ */
+@Entity
+@Data
+public class MenuRating extends AbstractRating {
+	
+	@ManyToOne
+	@JoinColumn(name = "MENU_ID")
+	private Menu menu;
+	
+}
