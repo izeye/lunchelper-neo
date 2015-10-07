@@ -1,0 +1,29 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lunchelper - Restaurants</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+    <h1>Restaurants</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="restaurant : ${restaurants}">
+            <td th:text="${restaurant.name}"></td>
+            <td th:text="${restaurant.type}"></td>
+            <td th:text="${restaurant.address}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
