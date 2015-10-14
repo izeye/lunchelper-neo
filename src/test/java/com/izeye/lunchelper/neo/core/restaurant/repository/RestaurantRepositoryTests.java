@@ -3,10 +3,8 @@ package com.izeye.lunchelper.neo.core.restaurant.repository;
 import com.izeye.lunchelper.neo.Application;
 import com.izeye.lunchelper.neo.core.restaurant.domain.Menu;
 import com.izeye.lunchelper.neo.core.restaurant.domain.MenuRating;
-import com.izeye.lunchelper.neo.core.restaurant.domain.RatingScore;
 import com.izeye.lunchelper.neo.core.restaurant.domain.Restaurant;
 import com.izeye.lunchelper.neo.core.restaurant.domain.RestaurantRating;
-import com.izeye.lunchelper.neo.core.restaurant.domain.RestaurantType;
 import com.izeye.lunchelper.neo.core.user.domain.User;
 import com.izeye.lunchelper.neo.core.user.repository.UserRepository;
 import org.junit.Test;
@@ -16,8 +14,11 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
-
+import static com.izeye.lunchelper.neo.support.test.TestDomainFactory.createMenu;
+import static com.izeye.lunchelper.neo.support.test.TestDomainFactory.createMenuRating;
+import static com.izeye.lunchelper.neo.support.test.TestDomainFactory.createRestaurant;
+import static com.izeye.lunchelper.neo.support.test.TestDomainFactory.createRestaurantRating;
+import static com.izeye.lunchelper.neo.support.test.TestDomainFactory.createUser;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.sameInstance;
@@ -77,47 +78,6 @@ public class RestaurantRepositoryTests {
 		assertThat(menuRatingRepository.findAll(), contains(menuRating));
 		assertThat(menuRatingRepository.findOne(menuRating.getId()),
 				is(sameInstance(menuRating)));
-	}
-
-	private User createUser() {
-		User user = new User();
-		user.setUsername("izeye");
-		user.setPassword("1234");
-		return user;
-	}
-
-	private Restaurant createRestaurant() {
-		Restaurant restaurant = new Restaurant();
-		restaurant.setType(RestaurantType.KOREAN);
-		restaurant.setName("콩두 분당미금점");
-		restaurant.setAddress("경기도 성남시 분당구 금곡동 158 미도프라자 1층 116호");
-		return restaurant;
-	}
-
-	private RestaurantRating createRestaurantRating(User user, Restaurant restaurant) {
-		RestaurantRating rating = new RestaurantRating();
-		rating.setUser(user);
-		rating.setScore(RatingScore.VERY_GOOD);
-		rating.setComment("Good!");
-		restaurant.addRating(rating);
-		return rating;
-	}
-
-	private Menu createMenu(Restaurant restaurant) {
-		Menu menu = new Menu();
-		menu.setName("청국장비빔밥");
-		menu.setPrice(7000);
-		restaurant.addMenu(menu);
-		return menu;
-	}
-
-	private MenuRating createMenuRating(User user, Menu menu) {
-		MenuRating menuRating = new MenuRating();
-		menuRating.setUser(user);
-		menuRating.setScore(RatingScore.VERY_GOOD);
-		menuRating.setComment("Good!");
-		menu.addRating(menuRating);
-		return menuRating;
 	}
 
 }

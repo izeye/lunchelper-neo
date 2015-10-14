@@ -27,9 +27,7 @@ public class UserServiceTests {
 	@Test
 	public void test() {
 		// Given
-		User user = new User();
-		user.setUsername("izeye");
-		user.setPassword("1234");
+		User user = new User("izeye", "1234");
 
 		// When
 		User signedUpUser = userService.signUp(user);

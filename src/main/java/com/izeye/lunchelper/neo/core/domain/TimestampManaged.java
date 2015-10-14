@@ -1,6 +1,8 @@
 package com.izeye.lunchelper.neo.core.domain;
 
 import lombok.Data;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,15 +24,28 @@ public abstract class TimestampManaged {
 
 	private LocalDateTime createdTime;
 	private LocalDateTime modifiedTime;
+	
+	private String createdBy;
+	private String modifiedBy;
 
 	@PrePersist
 	private void onCreate() {
 		setCreatedTime(LocalDateTime.now());
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication != null) {
+			setCreatedBy(authentication.getName());
+		}
 	}
 
 	@PreUpdate
 	private void onUpdate() {
 		setModifiedTime(LocalDateTime.now());
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication != null) {
+			setModifiedBy(authentication.getName());
+		}
 	}
 	
 }

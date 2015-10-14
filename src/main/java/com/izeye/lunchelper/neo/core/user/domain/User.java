@@ -26,4 +26,12 @@ public class User extends TimestampManaged {
 	@OneToMany(mappedBy = "user")
 	private List<Vote> votes = new ArrayList<>();
 	
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+	
+	protected User() {
+	}
+	
 }

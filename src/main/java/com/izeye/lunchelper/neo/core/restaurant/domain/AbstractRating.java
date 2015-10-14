@@ -22,4 +22,13 @@ public class AbstractRating extends TimestampManaged {
 	private RatingScore score;
 	private String comment;
 	
+	protected AbstractRating(User user, RatingScore score, String comment) {
+		this.user = user;
+		this.score = score;
+		this.comment = comment;
+	}
+	
+	protected AbstractRating() {
+	}
+	
 }

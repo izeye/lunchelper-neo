@@ -28,9 +28,7 @@ public class UserRepositoryTests {
 	@Test
 	public void test() {
 		// Given
-		User user = new User();
-		user.setUsername("izeye");
-		user.setPassword("1234");
+		User user = new User("izeye", "1234");
 
 		// When
 		userRepository.save(user);

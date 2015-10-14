@@ -27,6 +27,15 @@ public class Restaurant extends TimestampManaged {
 	@OneToMany(mappedBy = "restaurant")
 	private List<RestaurantRating> ratings = new ArrayList<>();
 	
+	public Restaurant(RestaurantType type, String name, String address) {
+		this.type = type;
+		this.name = name;
+		this.address = address;
+	}
+	
+	protected Restaurant() {
+	}
+	
 	public void addMenu(Menu menu) {
 		this.menus.add(menu);
 		menu.setRestaurant(this);

@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.persistence.EntityManager;
@@ -24,6 +26,7 @@ import static org.hamcrest.core.IsNull.nullValue;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(Application.class)
+@WebAppConfiguration
 public class ApplicationTests {
 	
 	@Autowired
@@ -37,6 +40,9 @@ public class ApplicationTests {
 	
 	@PersistenceContext
 	EntityManager entityManager;
+	
+	@Autowired
+	OpenEntityManagerInViewInterceptor openEntityManagerInViewInterceptor;
 	
 	@Test
 	public void testDataSource() {
@@ -57,6 +63,11 @@ public class ApplicationTests {
 	@Test
 	public void testEntityManager() {
 		assertThat(this.entityManager, is(not(nullValue())));
+	}
+	
+	@Test
+	public void testOpenEntityManagerInViewInterceptor() {
+		assertThat(this.openEntityManagerInViewInterceptor, is(not(nullValue())));
 	}
 	
 }

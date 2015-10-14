@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -40,6 +41,12 @@ public class RestaurantController {
 		System.out.println(restaurants);
 		model.addAttribute("restaurants", restaurants);
 		return "restaurants/list";
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	@ResponseBody
+	public List<Restaurant> get() {
+		return restaurantService.list();
 	}
 	
 }
